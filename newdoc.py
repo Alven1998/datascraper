@@ -2,6 +2,8 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
+import os
 
 # Google Docs API authentication
 json_data = os.getenv("GOOGLE_CREDENTIALS")  # Set this in Render's environment variables
