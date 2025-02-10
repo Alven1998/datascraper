@@ -2,12 +2,9 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import json
-import os
 
 # Google Docs API authentication
-json_data = os.getenv("GOOGLE_CREDENTIALS")  # Set this in Render's environment variables
-credentials = json.loads(json_data)
+SERVICE_ACCOUNT_FILE = r'C:\Users\AMRYTT2.0\Downloads\deshboard-426016-45b6bea044c6.json'  # Path to your Google Docs credentials JSON file
 SCOPES = ['https://www.googleapis.com/auth/documents.readonly', 'https://www.googleapis.com/auth/drive.readonly']
 credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 docs_service = build('docs', 'v1', credentials=credentials)
