@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Text & URL Scraping Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Anchor Text & URL Scraping Tool</h1>
+        <button id="start-btn">Start Scraping</button>
+        <button id="close-btn">Close</button>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        document.getElementById('start-btn').addEventListener('click', function() {
+            fetch('/start-scraping', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => document.getElementById('status').innerText = data.message)
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            fetch('/close-server', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => document.getElementById('status').innerText = data.message)
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

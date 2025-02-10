@@ -1,0 +1,4 @@
+SERVICE_ACCOUNT_FILE = "deshboard-426016-45b6bea044c6.json"  # Path to credentials
+SCOPES = ['https://www.googleapis.com/auth/documents.readonly', 'https://www.googleapis.com/auth/drive.readonly']
+credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+docs_service = build('docs', 'v1', credentials=credentials)
